@@ -6,7 +6,7 @@ public class CheckPalindrome {
         int start = 0;
         int end = s.length() - 1;
         boolean isPalindrome = true;
-        while(start < end){
+        while (start < end){
             if(s.charAt(start) != s.charAt(end)){
                 isPalindrome = false;
                 break;
@@ -18,8 +18,9 @@ public class CheckPalindrome {
             System.out.println("palindrome");
         else System.out.println("not a palindrome");
     }
+
     public static void main(String[] args) {
-        String s = "mom";
+        String s = "mommy";
         checkPalindrome(s);
     }
 }

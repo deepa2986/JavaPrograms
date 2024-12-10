@@ -4,47 +4,66 @@ import java.util.Stack;
 
 public class ReverseString {
 
-    public static String reverseString(String s){
-        char[] charArray = s.toCharArray();
+    public static String reverseUsingRecursion(String s){
+        if(s == null || s.length() <= 1){
+            return s;
+        }
+        return reverseUsingRecursion(s.substring(1)) + s.charAt(0);
+    }
+
+    public  static String reverseString(String s){
+        char[] strArray = s.toCharArray();
         int start = 0;
         int end = s.length() - 1;
-
-        while (start < end) {
-         char temp = charArray[start];
-         charArray[start] = charArray[end];
-         charArray[end] = temp;
-         start++;
-         end--;
+        while(start < end){
+            char temp = strArray[start];
+            strArray[start] = strArray[end];
+            strArray[end] = temp;
+            start++;
+            end--;
         }
-        return new String(charArray);
+        return new String(strArray);
     }
 
     public static void reverseStringUsingStack(String s){
         Stack<Character> stack = new Stack<>();
         for(int i = 0; i < s.length(); i++){
-            char c = s.charAt(i);
-            stack.push(c);
+            char ch = s.charAt(i);
+            stack.push(ch);
         }
-        while (!stack.isEmpty()){
+        while(!stack.empty()){
             System.out.print(stack.pop());
         }
     }
 
-    public static String reverseStringUsingRecursion(String s){
-        if (s == null || s.length() <= 1)
-            return s;
-        return reverseStringUsingRecursion(s.substring(1)) + s.charAt(0);
+    public static void reverseStrings(char[] chars){
+        int start = 0;
+        int end = chars.length - 1;
+        while (start < end){
+            char temp = chars[start];
+            chars[start] = chars[end];
+            chars[end] = temp;
+            start++;
+            end--;
+        }
     }
 
     public static void main(String[] args) {
-        String s = "tree bree";
-        System.out.println(s);
+
+        String s = "australia";
+        String revString = reverseUsingRecursion(s);
+        System.out.println(revString);
+
         String reverseString = reverseString(s);
         System.out.println(reverseString);
 
         reverseStringUsingStack(s);
+
         System.out.println();
-        String s1 = reverseStringUsingRecursion(s);
-        System.out.println(s1);
+        char[] chars = s.toCharArray();
+        reverseStrings(chars);
+        System.out.println(chars);
+
+
     }
 }
